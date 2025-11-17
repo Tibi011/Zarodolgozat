@@ -11,11 +11,15 @@ const pool = mysql.createPool({
         host: 'localhost',
         user: 'root',
         password: '',
-        database: ''
+        database: 'osztv_adatbazis'
+        })
+
+app.get('/', (req, res) => {
+        res.send('Hello World!')
         })
 
     //Tibi backend
-
+    
 
     //Bogi backend
 
