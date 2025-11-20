@@ -101,6 +101,28 @@ app.delete('/feladatTorles/:feladat_id', (req, res) => {
         })
 })
 
+//Minden adat
+app.get('/mindenadat', (req, res) => {
+        const sql=`
+                    select *
+                    from feladat
+                    inner join ev
+                    on ev_id=feladat_ev;
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
