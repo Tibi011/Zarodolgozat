@@ -68,7 +68,7 @@ app.post('/evKeres', (req, res) => {
 
 
 //keresés kérdés egy szavára - like
-app.post('/feladatKerdes', (req, res) => {
+app.post('/kerdesKeres', (req, res) => {
         const {feladat_kerdes} =req.body
         const sql=`
                 SELECT * 
@@ -87,10 +87,19 @@ app.post('/feladatKerdes', (req, res) => {
         })
 })
 
-
-
-
-
+//feladat törlés
+app.delete('/feladatTorles/:feladat_id', (req, res) => {
+        const {feladat_id} =req.params
+        const sql=`delete from feladat where feladat_id=?`
+        pool.query(sql,[feladat_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+       
+        return res.status(200).json({message:"Sikeres törlés"})
+        })
+})
 
 
 app.listen(port, () => {
