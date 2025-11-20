@@ -22,6 +22,54 @@ app.get('/', (req, res) => {
     
 
     //Bogi backend
+//keresés év alapján - POST, év név (inner join)
+
+app.post('/evKeres', (req, res) => {
+        const {ev_szam} =req.body
+        const sql=`
+                SELECT * 
+                from ev
+                inner join feladat
+                on feladat_ev = ev_id
+                where ev_szam = ?`
+        pool.query(sql,[ev_szam], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+//keresés kérdés egy szavára - like
+app.post('/feladatKerdes', (req, res) => {
+        const {feladat_kerdes} =req.body
+        const sql=`
+                SELECT * 
+                from feladat 
+                where feladat.feladat_kerdes like ?   `
+        pool.query(sql,[`%${feladat_kerdes}%`], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+
+
+
 
 
 app.listen(port, () => {
