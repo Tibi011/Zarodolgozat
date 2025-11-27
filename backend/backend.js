@@ -113,7 +113,7 @@ app.post('/evKeres', (req, res) => {
 
 
 //keresés kérdés egy szavára - like
-app.post('/feladatKerdes', (req, res) => {
+app.post('/kerdesKeres', (req, res) => {
         const {feladat_kerdes} =req.body
         const sql=`
                 SELECT * 
@@ -132,9 +132,40 @@ app.post('/feladatKerdes', (req, res) => {
         })
 })
 
+//feladat törlés
+app.delete('/feladatTorles/:feladat_id', (req, res) => {
+        const {feladat_id} =req.params
+        const sql=`delete from feladat where feladat_id=?`
+        pool.query(sql,[feladat_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+       
+        return res.status(200).json({message:"Sikeres törlés"})
+        })
+})
 
+//Minden adat
+app.get('/mindenadat', (req, res) => {
+        const sql=`
+                    select *
+                    from feladat
+                    inner join ev
+                    on ev_id=feladat_ev;
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
 
-
+        return res.status(200).json(result)
+        })
+})
 
 
 
