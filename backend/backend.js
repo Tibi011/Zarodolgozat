@@ -19,9 +19,54 @@ app.get('/', (req, res) => {
         })
 
     //Tibi backend
+    
+    // Get lekérdezés év  
+    app.get('/ev', (req, res) => {
+        const sql=`SELECT * from ev`
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+app.post('/evIdKeres', (req, res) => {
+        const {ev_id} =req.body
+        const sql=`
+                select *
+                from ev
+                inner join feladat
+                on feladat_ev = ev_id
+                where ev_id=?
+                `
+        pool.query(sql,[ev_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+
+
+
+
+
     //Évek lekérdezése
     //Feladatok lekérdezése év id alapján (POST)
-    
     app.post('/feladatKerdezId', (req, res) => {
         const {feladat_ev} =req.body
         const sql=`
