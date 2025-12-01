@@ -121,7 +121,7 @@ app.post('/kerdesKeres', (req, res) => {
         const sql=`
                 SELECT * 
                 from feladat 
-                where feladat.feladat_kerdes like ?   `
+                where feladat_kerdes like ?   `
         pool.query(sql,[`%${feladat_kerdes}%`], (err, result) => {
         if (err) {
             console.log(err)
