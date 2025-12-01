@@ -14,6 +14,9 @@ const pool = mysql.createPool({
         database: 'osztv_adatbazis'
         })
 
+const login = require('./login');
+app.use('/login', login);
+
 app.get('/', (req, res) => {
         res.send('Hello World!')
         })
