@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Lenyilo from './Lenyilo';
 import FeladatEvSzerint from './FeladatEvSzerint';
-import Indit from './Indit';
+//import Indit from './Indit';
 
 const Feladatok=()=>{
     const [kivalasztott,setKivalasztott]=useState(1)

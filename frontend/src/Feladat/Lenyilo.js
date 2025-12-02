@@ -7,7 +7,17 @@ const Lenyilo=({kivalasztott,selectedYear})=>{
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
 
-    const leToltes=async ()=>{
+    
+
+    const darabol =(szoveg)=>{
+        let kecske=szoveg.split(';')
+        kivalasztott(kecske[0])
+        selectedYear(kecske[1])
+    }
+
+    useEffect(()=>{
+
+        const leToltes=async ()=>{
         try{
             const response=await fetch(Cim.Cim+"/ev")
             const data=await response.json()
@@ -33,15 +43,10 @@ const Lenyilo=({kivalasztott,selectedYear})=>{
         
     }
 
-    const darabol =(szoveg)=>{
-        let kecske=szoveg.split(';')
-        kivalasztott(kecske[0])
-        selectedYear(kecske[1])
-    }
 
-    useEffect(()=>{
+
         leToltes()
-    },[])
+    },[kivalasztott,selectedYear])
 
     if (tolt)
         return (
