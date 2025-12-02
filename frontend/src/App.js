@@ -12,6 +12,9 @@ import Menu1 from './Menu1/Menu1';
 import Feladat from './Feladat/Feladatok'
 //Admin menük
 import Admin from './Admin/Admin';
+import FeladatTorles from './FeladatTorles/FeladatTorles';
+import KeresKerdes from './FeladatKeres/KerdesKeres';
+import EvKeres from './FeladatKeres/EvKeres';
 //User menük
 import User from './User/User';
 
@@ -52,6 +55,34 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route 
+            path="/feladatTorles"
+            element={
+              <ProtectedRoute role="admin">
+                <FeladatTorles />
+              </ProtectedRoute>
+            }
+          />
+         
+          <Route 
+            path="/keresKerdes"
+            element={
+              <ProtectedRoute role="admin">
+                <KeresKerdes />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route 
+            path="/evKeres"
+            element={
+              <ProtectedRoute role="admin">
+                <EvKeres />
+              </ProtectedRoute>
+            }
+          />
+
+
 
           <Route 
             path="/user"
