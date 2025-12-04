@@ -1,14 +1,23 @@
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
+import Modosit from "../FeladatModosit/Modosit"
 
-const FeladatTorles=({kivalasztott})=>{
+
+const FeladatTorles=()=>{
     const [adatok,setAdatok]=useState([])
     const [beSzoveg,setBeSzoveg]=useState("")
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
     const [siker,setSiker]=useState(false)
+    
+    const [talalat,setTalalat]=useState(false)
+    const [kivalasztott,setKivalasztott]=useState(1)
 
-
+const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
+    //alert(feladat_id)
+    setKivalasztott(feladat_id)
+     setTalalat(true)
+}
 const keres=async ()=>{
         try{
             let bemenet={
@@ -108,12 +117,19 @@ const keres=async ()=>{
             />
             <br />
             <button className="btn btn-secondary mt-3 mb-3" onClick={keres}>Keresés</button>
+
+
+        {talalat && <Modosit kivalasztott={kivalasztott} />}
+
+
+
                 <table class="table table-bordered">
                     <thead>
                         <tr> 
                             <th style={{textAlign:"center"}}>Feladat id</th>
                             <th style={{textAlign:"center"}}>Feladat kérdése</th>
                             <th style={{textAlign:"center"}}>Törlés</th>
+                            <th style={{textAlign:"center"}}>Módosítás</th>
                         </tr> 
                     </thead>
                                          
@@ -122,11 +138,20 @@ const keres=async ()=>{
                         <tr key={index} > 
                         <td style={{textAlign:"center"}}>{elem.feladat_id}</td>
                         <td>{elem.feladat_kerdes}</td>
-                        <td style={{textAlign:"center"}}><button
+                        <td style={{textAlign:"center"}}>
+                        <button
                             className="btn btn-warning"
                             onClick={()=>torlesFuggveny(elem.feladat_id,elem.feladat_kerdes)}>
                                 x
-                        </button></td>  
+                        </button>
+                        </td> 
+                        <td>
+                        <button
+                            className="btn btn-primary"
+                            onClick={()=>modositasFuggveny(elem.feladat_id,elem.feladat_kerdes)} >
+                                Módosítás
+                        </button>
+                        </td>  
                     </tr>
                     </tbody>
                     
