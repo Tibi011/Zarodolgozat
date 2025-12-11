@@ -31,7 +31,7 @@ const Modosit=({kivalasztott})=>{
 
         }
         try{
-        const response=await fetch(Cim.Cim+"/feladatkModosit/"+kivalasztott,{
+        const response=await fetch(Cim.Cim+"/feladatModosit/"+kivalasztott,{
                 method: "put",
                 headers: {
                     "Content-Type": "application/json"
@@ -136,7 +136,7 @@ const Modosit=({kivalasztott})=>{
              <input 
                 type="text" 
                 value={modFeladat.feladat_c}
-                onChange={(e)=>setModFeladat({...modFeladat,feladat_b:e.target.value})}
+                onChange={(e)=>setModFeladat({...modFeladat,feladat_c:e.target.value})}
              />
              </div>
             <div>

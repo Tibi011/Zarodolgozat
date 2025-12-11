@@ -91,7 +91,7 @@ const keres=async ()=>{
                    })
             const data=await response.json()
             if (response.ok){
-                alert(data["message"])
+                //alert(data["message"])
                 setSiker(!siker)
             }
             else{
@@ -111,15 +111,20 @@ const keres=async ()=>{
     else return (
         <div>
 
-                <div className="cim">Add meg a keresendő szót</div>
-                <input 
+                <div className="cim" style={{fontWeight:"bold"}}>Add meg a keresendő szót</div>
+                <input
+                type="text" 
+                placeholder="Keresés" 
                 onChange={(e)=>setBeSzoveg(e.target.value)}
             />
             <br />
             <button className="btn btn-secondary mt-3 mb-3" onClick={keres}>Keresés</button>
+            <div>
+                Találatok száma: {adatok.length}
+            </div>
 
 
-        {talalat && <Modosit kivalasztott={kivalasztott} />}
+        {talalat && <Modosit kivalasztott={kivalasztott}/>}
 
 
 

@@ -42,7 +42,7 @@ const EvKeres=()=>{
 
     return (
         <div>
-            <div className="cim">Keresés év alapján</div>
+            <div className="cim" style={{fontWeight:"bold"}}>Keresés év alapján</div>
             <div className="keretKeres">
              <input 
                 type="text" 
