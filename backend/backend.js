@@ -170,6 +170,46 @@ app.get('/mindenadat', (req, res) => {
         })
 })
 
+//év
+app.get('/evAdat', (req, res) => {
+        const sql=`
+                    select *
+                    from ev;
+                    
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+//támakör
+app.get('/temaAdat', (req, res) => {
+        const sql=`
+                    select *
+                    from tema;
+                
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
 
 //Módosít
 app.put('/feladatModosit/:feladat_id', (req, res) => {

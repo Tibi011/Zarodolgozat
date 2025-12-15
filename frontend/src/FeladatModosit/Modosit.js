@@ -2,9 +2,12 @@
 
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
+import LenyiloTema from "./LenyiloTema"
+import LenyiloEv from "./LenyiloEv"
 
 const Modosit=({kivalasztott})=>{
-
+ const [kivalasztottTema,setKivalasztottTema]=useState(1)
+ const [kivalasztottEv,setKivalasztottEv]=useState(1)
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
     
@@ -26,8 +29,8 @@ const Modosit=({kivalasztott})=>{
             "feladat_e":modFeladat.feladat_e,
             "feladat_f":modFeladat.feladat_f,
             "feladat_helyes":modFeladat.feladat_helyes,
-            "feladat_ev":modFeladat.feladat_ev,
-            "feladat_tema":modFeladat.feladat_tema
+            "feladat_ev":kivalasztottEv,
+            "feladat_tema":kivalasztottTema
 
         }
         try{
@@ -180,24 +183,31 @@ const Modosit=({kivalasztott})=>{
             <div>
               
              <span style={{fontSize:15}}>Év: </span>
+             <LenyiloEv kivalasztott={setKivalasztottEv} kuld2={modFeladat.feladat_ev}/>
+             {/*
              <input 
                 type="text" 
                 value={modFeladat.feladat_ev}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_ev:e.target.value})}
              />
+             */}
              </div>
             <div>
               
              <span style={{fontSize:15}}>Témakör: </span>
+              <LenyiloTema kivalasztott={setKivalasztottTema} kuld={modFeladat.feladat_tema}/>
+
+            {/*
              <input 
                 type="text" 
                 value={modFeladat.feladat_tema}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_tema:e.target.value})}
              />
+             */}
              </div>
 
 
-             <div>
+             <div style={{marginTop:20}}>
              <button
                 type="submit"
                 className="btn btn-primary"

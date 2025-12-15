@@ -150,7 +150,7 @@ const keres=async ()=>{
                                 x
                         </button>
                         </td> 
-                        <td>
+                        <td style={{textAlign:"center"}}>
                         <button
                             className="btn btn-primary"
                             onClick={()=>modositasFuggveny(elem.feladat_id,elem.feladat_kerdes)} >
