@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Dec 02. 14:05
+-- Létrehozás ideje: 2025. Dec 04. 09:32
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -121,8 +121,8 @@ INSERT INTO `feladat` (`feladat_id`, `feladat_kerdes`, `feladat_a`, `feladat_b`,
 (51, 'Melyik JavaScript metódus ad vissza  egy új tömböt az eredeti  változtatása nélkül ?', 'a) tomb . filter  ( )', 'b) tomb  . peek  ( )', 'c) tomb  . sort ( )', 'd) tomb  . clone  ( ) 3 pont', '', '', 'A', '', 1, 0),
 (52, 'Melyik JavaScriptben létező metódus sal szúrhatunk  be új elemet a tömb elejére ?', 'a) . insert  ( 0 , érték )', 'b) . push ( 0 , érték )', 'c) . append ( érték )', 'd) . unshift  ( érték ) 3 pont', '', '', 'D', '', 1, 0),
 (53, 'Milyen formátum ot ellenőrzi ez a reguláris kifejezés: ^[1-9][0-9]{2} [0 -9]{3} d{3}$', 'a) Telefonszám ot (061 234 567)', 'b) TAJ szám ot (123 456 789)', 'c) Személyiszám ot (123 456 AB)', 'd) Bankszámla számot  (1111  2222 opcionális 3333 4444) 3 pont', '', '', 'B', '', 1, 0),
-(54, 'Mi lesz egy  „ for ... of ” ciklus eredménye a book  objektum bejárásakor ?', 'a) Típus hiba, mert az objektum nem iteráltható', 'b) Kulcs-érték pár ok ( \"year\" : 2024  )', 'c) Az objektum kulcsai  ( \"year\" )', 'd) Az objektum é rtékei ( 2024  )  3 pont', '', '', 'A', '', 1, 0),
-(55, 'Mi lesz egy „ for  ... in ” ciklus eredménye a user objektum bejárásakor?', 'a) Undefined  értéke k, mert nem tud objektumot iterálni', 'b) Kulcs-érték pár ok ( \'id\' : 2024 )', 'c) Az objektum kulcsai ( \'id\' )', 'd) Az objektum értékei ( 2024 )  3 pont', '', '', 'C', '', 1, 0),
+(54, 'Mi lesz egy  „ for ... of ” ciklus eredménye a book  objektum bejárásakor ?', 'a) Típus hiba, mert az objektum nem iteráltható', 'b) Kulcs-érték pár ok ( \"year\" : 2024  )', 'c) Az objektum kulcsai  ( \"year\" )', 'd) Az objektum é rtékei ( 2024  )  3 pont', '', '', 'A', '2025_24.png', 1, 0),
+(55, 'Mi lesz egy „ for  ... in ” ciklus eredménye a user objektum bejárásakor?', 'a) Undefined  értéke k, mert nem tud objektumot iterálni', 'b) Kulcs-érték pár ok ( \'id\' : 2024 )', 'c) Az objektum kulcsai ( \'id\' )', 'd) Az objektum értékei ( 2024 )  3 pont', '', '', 'C', '2025_25.png', 1, 0),
 (56, 'Hogyan  iratkozhatunk fel egy „handler”  nevű függvénnyel arra  eseményre,  amit az  \noldal teljes tarta lmának betöl tése után vált ki az ablak ?', 'a) window . addEventListener ( \'on Loaded \' , handler  )', 'b) window . addEventListener ( \'load\' , handler )', 'c) window . load ed = handler', 'd) window . isReady  = handler  3 pont', '', '', 'B', '', 1, 0),
 (57, 'Mire  használ juk a Promise  objektumot?', 'a) Ennek  segítségével  tudjuk elkerülni az aszinkron működést', 'b) A használatával kezelhetjük az async  kulcsszó kivételeit', 'c) Ezzel reprezentáljuk  egy jövőbeni művelet eredményé t', 'd) Egy aszinkron  függvénynek lehet vele paramétert átadni  3 pont', '', '', 'C', '', 1, 0),
 (58, 'Melyik függvény  hívás ával tudunk egy szerverhez kérést intézni ?', 'a) http ( url )', 'b) get ( url )', 'c) fetch ( url )', 'd) request ( url )', 'e) response ( url )  3 pont', '', 'C', '', 1, 0),

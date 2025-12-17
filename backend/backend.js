@@ -6,6 +6,8 @@ const port = 3000
 
 app.use(cors())
 app.use(express.json())
+app.use("/kepek",express.static("kepek"))
+app.use("/kepek2",express.static("kepek2"))
 
 const pool = mysql.createPool({
         host: 'localhost',

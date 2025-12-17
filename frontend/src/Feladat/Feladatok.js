@@ -39,8 +39,13 @@ const Feladatok=()=>{
 
                     </div>
                 <div className="col-sm-8">
-                 {testStarted && <div>{selectedYear}</div>}
-                  {testStarted && <button onClick={Megszakit}>Megszakítás</button>}
+                 {testStarted && <div className='tesztCim'>{selectedYear}</div>}
+                  {testStarted && (
+                    <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        <button onClick={Megszakit}>Megszakítás</button>
+                    </div>
+                )}
+
                    {testStarted && <FeladatEvSzerint kivalasztott={kivalasztott}/>}
                     
                    
