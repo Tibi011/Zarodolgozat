@@ -172,6 +172,87 @@ app.get('/mindenadat', (req, res) => {
         })
 })
 
+//év
+app.get('/evAdat', (req, res) => {
+        const sql=`
+                    select *
+                    from ev;
+                    
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+//támakör
+app.get('/temaAdat', (req, res) => {
+        const sql=`
+                    select *
+                    from tema;
+                
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+//Módosít
+app.put('/feladatModosit/:feladat_id', (req, res) => {
+        const {feladat_id} =req.params
+        const {feladat_kerdes,feladat_a,feladat_b,feladat_c,feladat_d,feladat_e,feladat_f, feladat_helyes, feladat_ev,feladat_tema}=req.body
+        const sql=`update feladat 
+                    set feladat_kerdes=?,feladat_a=?,feladat_b=?,feladat_c=?,feladat_d=?,feladat_e=?,feladat_f=?, feladat_helyes=? , feladat_ev=?,feladat_tema=?
+                    where feladat_id=?
+                    `
+        pool.query(sql,[feladat_kerdes,feladat_a,feladat_b,feladat_c,feladat_d,feladat_e,feladat_f, feladat_helyes, feladat_ev,feladat_tema,feladat_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+
+        return res.status(200).json({message:"Sikeres módosítás"})
+        })
+})
+
+
+app.get('/feladatEgy/:feladat_id', (req, res) => {
+        const {feladat_id} =req.params
+        const sql=`
+                select *
+                from feladat
+                inner join ev
+                on ev_id=feladat_ev
+                where feladat_id=?
+                `
+        pool.query(sql,[feladat_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
 
 
 app.listen(port, () => {

@@ -41,7 +41,7 @@ const KeresKerdes=()=>{
 
     return (
         <div>
-            <div className="cim">Keresés kérdés alapján</div>
+            <div className="cim" style={{fontWeight:"bold"}}>Keresés kérdés alapján</div>
             <div className="keretKeres">
              <input 
                 type="text" 
