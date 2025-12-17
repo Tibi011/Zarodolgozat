@@ -2,7 +2,7 @@
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
 
-const LenyiloTema=({kivalasztott,kuld})=>{
+const LenyiloTema=({kivalasztott,/*kuld*/})=>{
     const [adatok,setAdatok]=useState([])
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
@@ -33,7 +33,7 @@ const LenyiloTema=({kivalasztott,kuld})=>{
     useEffect(()=>{
         //alert(kuld)
         leToltes()
-    },[kuld])
+    },[])
 
     if (tolt)
         return (
@@ -47,11 +47,14 @@ const LenyiloTema=({kivalasztott,kuld})=>{
     else return (
         <div>
             <select
-             value={kuld}
-             onChange={(e)=>  kivalasztott(e.target.value)      }>
-                {adatok.map((elem,index)=>(
-                    <option key={index} value={elem.tema_id}>{elem.tema_id} {elem.tema}</option>
+             onChange={kivalasztott}>
+                {adatok.map((elem, index) => (
+                    <option key={index}>
+                    {elem.tema}
+                    </option>
                 ))}
+
+
             </select>
         </div>
     )
