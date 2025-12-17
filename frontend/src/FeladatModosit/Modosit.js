@@ -108,11 +108,22 @@ const Modosit=({kivalasztott})=>{
             <div>
              <div style={{marginBottom:"10px",fontWeight:"bold",fontSize:20}}>Feladat módosítása</div>   
              <span style={{fontSize:15}}>Feladat kérdése: </span>
-             <input 
+                <input
+                    type="text"
+                    value={modFeladat.feladat_kerdes}
+                    onChange={(e) =>
+                        setModFeladat({
+                        ...modFeladat,
+                        feladat_kerdes: e.target.value,
+                        })
+                    }
+                    style={{ width: "1500px", height: "50px" }}
+                    />
+             {/*<input 
                 type="text" 
                 value={modFeladat.feladat_kerdes}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_kerdes:e.target.value})}
-             />
+             />*/}
              </div>
             <div>
              
@@ -122,6 +133,7 @@ const Modosit=({kivalasztott})=>{
                 type="text" 
                 value={modFeladat.feladat_a}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_a:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
             <div>
@@ -131,6 +143,7 @@ const Modosit=({kivalasztott})=>{
                 type="text" 
                 value={modFeladat.feladat_b}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_b:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
             <div>
@@ -140,6 +153,7 @@ const Modosit=({kivalasztott})=>{
                 type="text" 
                 value={modFeladat.feladat_c}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_c:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
             <div>
@@ -149,6 +163,7 @@ const Modosit=({kivalasztott})=>{
                 type="text" 
                 value={modFeladat.feladat_d}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_d:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
             <div>
@@ -158,16 +173,19 @@ const Modosit=({kivalasztott})=>{
                 type="text" 
                 value={modFeladat.feladat_e}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_e:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
              
             <div>
               
              <span style={{fontSize:15}}>F válasz: </span>
+             
              <input 
                 type="text" 
                 value={modFeladat.feladat_f}
                 onChange={(e)=>setModFeladat({...modFeladat,feladat_f:e.target.value})}
+                style={{ width: "1500px", height: "50px" }}
              />
              </div>
             <div>

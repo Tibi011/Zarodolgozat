@@ -7,6 +7,8 @@ const LenyiloEv=({kivalasztott,kuld2})=>{
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
 
+    
+    
     const leToltes=async ()=>{
         try{
             const response=await fetch(Cim.Cim+"/evAdat")
@@ -46,11 +48,11 @@ const LenyiloEv=({kivalasztott,kuld2})=>{
     
     else return (
         <div>
-            <select
-             value={kuld2}
-             onChange={(e)=>  kivalasztott(e.target.value)      }>
-                {adatok.map((elem,index)=>(
-                    <option key={index} value={elem.tema_id}>{elem.ev_id} {elem.ev_szam}</option>
+            <select onChange={kivalasztott}>
+                {adatok.map((elem, index) => (
+                    <option key={index}>
+                    {elem.ev_szam}
+                    </option>
                 ))}
             </select>
         </div>
