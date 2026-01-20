@@ -137,6 +137,38 @@ app.post('/kerdesKeres', (req, res) => {
         })
 })
 
+//keresés kérdés,év
+app.post('/kerdesEvSzoKeres', (req, res) => {
+    const { feladat_kerdes, feladat_ev } = req.body;
+
+    let sql = `SELECT * FROM feladat WHERE 1=1`;
+    const params = [];
+
+    if (feladat_kerdes) {
+        sql += ` AND feladat_kerdes LIKE ?`;
+        params.push(`%${feladat_kerdes}%`);
+    }
+
+    if (feladat_ev) {
+        sql += ` AND feladat_ev = ?`;
+        params.push(feladat_ev);
+    }
+
+    pool.query(sql, params, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ error: "Hiba" });
+        }
+
+        if (result.length === 0) {
+            return res.status(404).json({ error: "Nincs adat" });
+        }
+
+        return res.status(200).json(result);
+    });
+});
+
+
 //feladat törlés
 app.delete('/feladatTorles/:feladat_id', (req, res) => {
         const {feladat_id} =req.params

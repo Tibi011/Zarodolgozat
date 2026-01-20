@@ -13,6 +13,7 @@ import Feladat from './Feladat/Feladatok'
 //Admin menük
 import Admin from './Admin/Admin';
 import FeladatTorles from './FeladatTorles/FeladatTorles';
+import FeladatEvesTorles from './FeladatTorles/FeladatEvesTroles';
 import KeresKerdes from './FeladatKeres/KerdesKeres';
 import EvKeres from './FeladatKeres/EvKeres';
 //User menük
@@ -60,6 +61,14 @@ function App() {
             element={
               <ProtectedRoute role="admin">
                 <FeladatTorles />
+              </ProtectedRoute>
+            }
+          />
+          <Route 
+            path="/feladatEvesTroles"
+            element={
+              <ProtectedRoute role="admin">
+                <FeladatEvesTorles />
               </ProtectedRoute>
             }
           />
