@@ -27,13 +27,13 @@ const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
 //szöveg
 
 const keres=async ()=>{
-    alert(kivalasztott)
+    alert(kivalasztottEv)
 //szóra és évre
-if (beSzoveg !== "" && kivalasztott !== 0)
+//if (beSzoveg !== "" && kivalasztottEv !== 0)
         try{
             let bemenet={
                 "feladat_kerdes":beSzoveg,
-                "ev": kivalasztott
+                "ev": kivalasztottEv
             }
             const response=await fetch(Cim.Cim+"/kerdesKeresEv",{
                     method: "POST",
@@ -200,7 +200,7 @@ if (beSzoveg != "" && kivalasztott == 0)
                         </option>
                     ))}
                 </select>*/}
-               <LenyiloEvAlap kivalasztott={setKivalasztottEv}/>
+               <LenyiloEvAlap kivalasztottEv={setKivalasztottEv}/>
 
             </div>
             
