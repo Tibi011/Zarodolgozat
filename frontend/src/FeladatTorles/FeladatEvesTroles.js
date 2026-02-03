@@ -29,7 +29,7 @@ const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
 const keres=async ()=>{
     alert(kivalasztott)
 //szóra és évre
-if (beSzoveg != "" && kivalasztott != 0)
+if (beSzoveg !== "" && kivalasztott !== 0)
         try{
             let bemenet={
                 "feladat_kerdes":beSzoveg,
