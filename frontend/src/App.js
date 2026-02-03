@@ -18,7 +18,6 @@ import FeladatEvesTorles from './FeladatTorles/FeladatEvesTroles';
 import KeresKerdes from './FeladatKeres/KerdesKeres';
 import EvKeres from './FeladatKeres/EvKeres';
 //User menük
-import User from './User/User';
 import FeladatGyakorlas from './FeladatGyakorlas/Feladatok'
 import Eredmeny from './Eredmeny/Eredmeny';
 
@@ -100,14 +99,7 @@ function App() {
 
 
 
-          <Route 
-            path="/user"
-            element={
-              <ProtectedRoute role="user">
-                <User />
-              </ProtectedRoute>
-            }
-          />
+          
 
           <Route 
             path="/feladatgyakorlas"
