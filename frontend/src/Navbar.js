@@ -48,7 +48,12 @@ const Navbar = () => {
           )}
           {loggedIn && role === "admin" && (
             <Link to="/feladatTorles" className="link" onClick={() => setMenuOpen(false)}>
-              Feladat Törlés
+              Feladat Kezelés
+            </Link>
+          )}
+          {loggedIn && role === "admin" && (
+            <Link to="/feladatEvesTroles" className="link" onClick={() => setMenuOpen(false)}>
+              Feladat Részletek
             </Link>
           )}
            {loggedIn && role === "admin" && (
