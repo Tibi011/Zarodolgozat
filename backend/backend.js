@@ -136,6 +136,27 @@ app.post('/kerdesKeres', (req, res) => {
         return res.status(200).json(result)
         })
 })
+//keresés kérdés egy szavára + év - like
+app.post('/kerdesKeresEv', (req, res) => {
+        const {feladat_kerdes,ev} =req.body
+        const sql=`
+                SELECT * 
+                from feladat
+                inner join ev
+                on ev.ev_id = feladat.feladat_ev
+                where feladat_kerdes like ? and feladat.feladat_ev = ?   `
+        pool.query(sql,[`%${feladat_kerdes}%`,ev], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
 
 //keresés kérdés,év
 app.post('/kerdesEvSzoKeres', (req, res) => {

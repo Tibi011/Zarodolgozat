@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
 import Modosit from "../FeladatModosit/Modosit"
+import LenyiloEvAlap from "./LenyiloEvAlap"
+
 
 
 
@@ -8,13 +10,13 @@ const FeladatEvesTorles=()=>{
     const [adatok,setAdatok]=useState([])
     const [adatokEv,setAdatokEv]=useState([])
     const [beSzoveg,setBeSzoveg]=useState("")
-    
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
     const [siker,setSiker]=useState(false)
-    
     const [talalat,setTalalat]=useState(false)
     const [kivalasztott,setKivalasztott]=useState(1)
+
+     const [kivalasztottEv,setKivalasztottEv]=useState(1)
 
 const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
     //alert(feladat_id)
@@ -25,6 +27,46 @@ const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
 //szöveg
 
 const keres=async ()=>{
+    alert(kivalasztott)
+//szóra és évre
+if (beSzoveg != "" && kivalasztott != 0)
+        try{
+            let bemenet={
+                "feladat_kerdes":beSzoveg,
+                "ev": kivalasztott
+            }
+            const response=await fetch(Cim.Cim+"/kerdesKeresEv",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(bemenet)
+            })
+            const data=await response.json()
+            //alert(JSON.stringify(data))
+            //console.log(data)
+            if (response.ok)
+                {
+                    setAdatok(data)
+                    setTolt(false)}
+            else 
+                {
+                    setHiba(true)
+                    setTolt(false)
+                }
+            }
+        catch (error){
+            console.log(error)
+            setHiba(true)
+        }
+
+
+
+
+//csak ha a szóra keresünk
+
+/*
+if (beSzoveg != "" && kivalasztott == 0)
         try{
             let bemenet={
                 "feladat_kerdes":beSzoveg
@@ -53,6 +95,9 @@ const keres=async ()=>{
             console.log(error)
             setHiba(true)
         }
+*/
+
+
         
     }
 
@@ -148,14 +193,15 @@ const keres=async ()=>{
                 onChange={(e)=>setBeSzoveg(e.target.value)}
             />
             <div>
-                <select onChange={kivalasztott}>
+                {/*<select onChange={kivalasztott}>
                     {adatokEv.map((elem, index) => (
                         <option key={index}>
                         {elem.ev_szam}
                         </option>
                     ))}
-                </select>
-                
+                </select>*/}
+               <LenyiloEvAlap kivalasztott={setKivalasztottEv}/>
+
             </div>
             
             <br />
