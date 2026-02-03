@@ -1,0 +1,12 @@
+ setKivalaszt((prev) => {
+    // Ellenőrizzük, van-e már elem a tömbben ezzel a sorszámmal
+    const existingIndex = prev.findIndex(item => item.feladat_id === feladat_id);
+    if (existingIndex >= 0) {
+      // Ha van, frissítjük az értéket
+      const updated = [...prev];
+      updated[existingIndex] = { feladat_id, valasztas: gIndex };
+      return updated;
+    } else {
+      // Ha nincs, hozzáadjuk az új objektumot
+      return [...prev, { feladat_id, valasztas: gIndex }];
+    }})

@@ -10,6 +10,7 @@ import Register from './Register';
 //Bejelentkezés nélküli menük
 import Menu1 from './Menu1/Menu1';
 import Feladat from './Feladat/Feladatok'
+import Feladat2 from './Feladat2/Feladatok'
 //Admin menük
 import Admin from './Admin/Admin';
 import FeladatTorles from './FeladatTorles/FeladatTorles';
@@ -18,6 +19,8 @@ import KeresKerdes from './FeladatKeres/KerdesKeres';
 import EvKeres from './FeladatKeres/EvKeres';
 //User menük
 import User from './User/User';
+import FeladatGyakorlas from './FeladatGyakorlas/Feladatok'
+import Eredmeny from './Eredmeny/Eredmeny';
 
 const ProtectedRoute = ({ children, role }) => {
   const token = localStorage.getItem("token");
@@ -42,6 +45,10 @@ function App() {
          
           <Route path="/menu1" element={<Menu1 />} />
           <Route path="/feladat" element={<Feladat />} />
+          <Route path="/feladat2" element={<Feladat2 />} />
+          <Route path="/eredmeny" element={<Eredmeny />} />
+          
+
 
 
 {/* Bejelentkezés*/}
@@ -98,6 +105,15 @@ function App() {
             element={
               <ProtectedRoute role="user">
                 <User />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route 
+            path="/feladatgyakorlas"
+            element={
+              <ProtectedRoute role="user">
+                <FeladatGyakorlas />
               </ProtectedRoute>
             }
           />

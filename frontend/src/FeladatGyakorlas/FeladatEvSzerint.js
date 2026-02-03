@@ -11,11 +11,21 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   const [hiba, setHiba] = useState(false);
   const MySwal = withReactContent(Swal);
   const [osszpont, setOsszpont] = useState(null);
+  const [ertekelt, setErtekelt] = useState(false);
+
+  const id = localStorage.getItem("id");
+
+  const helyesIndexek = (helyes) => {
+    return helyes.split(",").map((betu) => betu.charCodeAt(0) - 65);
+  };
+ 
 
 
-  const Ertekel = () => {
+  const Ertekel = async () => {
   let db = 0;
   let pontozas = 0;
+
+  
 
   for (let i = 0; i < adatok.length; i++) {
     let elso = adatok[i];
@@ -34,15 +44,34 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
       db++;
       pontozas+=elso.feladat_pont;
     }
+
+    
   }
-
+  setErtekelt(true);
   const szazalek = Math.round((pontozas / osszpont) * 100);
+  alert(id)
+  // Itt ki kell írni adatbázisba, POST-os fetch
+  const bemenet={
+                    "szazalek":szazalek,
+                    "felhasznalo_id":id,
+                    "datum":"2026-02-02"
+                    
+                }
 
+                const response=await fetch(Cim.Cim+"/eredmenyFelvitel", {
+                                method: "post",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(bemenet)
+                            })
+
+                const data = await response.json()
   MySwal.fire({
   title: "Értékelés",
   html: `
     <p><strong>Összes feladat:</strong> ${adatok.length}db</p>
-     <p><strong>Össz pont:</strong> ${osszpont} pont</p>
+    <p><strong>Össz pont:</strong> ${osszpont} pont</p>
     <p><strong>Helyes válaszok darabszáma:</strong> ${db}</p>
     <p><strong>Elért pont:</strong> ${pontozas}</p>
     <p><strong>Eredmény:</strong> ${szazalek}%</p>
@@ -62,6 +91,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
         gombok: [false, false, false, false, false, false],
       }))
     );
+    setErtekelt(false);
   }
 });
   };
@@ -75,7 +105,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
     try {
       let bemenet = { ev_id: kivalasztott };
 
-      // 1️⃣ evIdKeres
+      //evIdKeres
       const response = await fetch(Cim.Cim + "/evIdKeres", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -97,7 +127,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
 
       setAdatok(kibovitett);
 
-      // 2️⃣ evIdKeresOsszpont
+      //evIdKeresOsszpont
       const responseOsszpont = await fetch(
         Cim.Cim + "/evIdKeresOsszpont",
         {
@@ -188,15 +218,28 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
             <div style={{ marginTop: "10px" }}>
               {valaszok.map((txt, gIndex) =>
                 txt && txt.trim() !== "" ? (
-                  <div style={{marginLeft:"30px"}}>
+                  <div style={{marginLeft:"30px", marginBottom:"15px"}}>
                   <button
                     key={gIndex}
                     className="gombValasz"
                     onClick={() => gombCsere(index, gIndex, elem.feladat_id)}
                     style={{
-                      backgroundColor: elem.gombok?.[gIndex] ? "lightgreen" : "white",
-                    }}
-                  >
+                              backgroundColor: elem.gombok?.[gIndex] ? "lightblue" : "white",
+                              border: "1px solid gray",
+                              boxShadow: (() => {
+                                if (!ertekelt && elem.gombok?.[gIndex]) return "0 0 0 2px lightblue";
+                                if (ertekelt) {
+                                  const helyesek = helyesIndexek(elem.feladat_helyes);
+                                  const helyes = helyesek.includes(gIndex);
+                                  if (helyes) return "0 0 0 3px green";
+                                  if (!helyes) return "0 0 0 3px red";
+                                  if (elem.gombok?.[gIndex]) return "0 0 0 2px lightblue";
+                                }
+                                return "none";
+                              })(),
+                            }}
+                      
+                                            >
                     {txt}
                   </button>
                   </div>

@@ -27,6 +27,7 @@ const Login = () => {
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('role', data.role);
+      localStorage.setItem('id',data.id)
 
       alert('Sikeres bejelentkezés!');
       navigate('/menu1');
