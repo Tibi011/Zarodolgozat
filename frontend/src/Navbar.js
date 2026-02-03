@@ -56,17 +56,8 @@ const Navbar = () => {
               Feladat Részletek
             </Link>
           )}
-           {loggedIn && role === "admin" && (
-            <Link to="/keresKerdes" className="link" onClick={() => setMenuOpen(false)}>
-              Kérdés keresése
-            </Link>
-          )}
-
-          {loggedIn && role === "admin" && (
-            <Link to="/evKeres" className="link" onClick={() => setMenuOpen(false)}>
-              Év keresése
-            </Link>
-          )}
+           
+          
 
 
           {loggedIn && role === "user" && (
