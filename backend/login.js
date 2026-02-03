@@ -19,7 +19,8 @@ router.post('/login', (req, res) => {
 
   const query = `
     SELECT 
-      felhasznalo_nev, 
+      felhasznalo_nev,
+      felhasznalo_id, 
       felhasznalo_jelszo,
       rang_nev AS role
     FROM felhasznalo
@@ -62,7 +63,8 @@ router.post('/login', (req, res) => {
 
       return res.json({
         token: token,
-        role: rows[0].role
+        role: rows[0].role,
+        id: rows[0].felhasznalo_id
       });
     });
   });

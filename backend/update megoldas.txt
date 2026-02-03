@@ -1,0 +1,68 @@
+UPDATE feladat
+SET feladat_tema = 1
+WHERE feladat_id BETWEEN 1 AND 30;
+
+UPDATE feladat
+SET feladat_tema = 2
+WHERE feladat_id BETWEEN 31 AND 60;
+
+UPDATE feladat
+SET feladat_tema = 3
+WHERE feladat_id BETWEEN 61 AND 90;
+
+UPDATE feladat
+SET feladat_tema = 4
+WHERE feladat_id BETWEEN 91 AND 120;
+
+UPDATE feladat
+SET feladat_tema = 1
+WHERE feladat_id BETWEEN 242 AND 270;
+
+UPDATE feladat
+SET feladat_tema = 2
+WHERE feladat_id BETWEEN 271 AND 296;
+
+UPDATE feladat
+SET feladat_tema = 3
+WHERE feladat_id BETWEEN 297 AND 322;
+
+UPDATE feladat
+SET feladat_tema = 4
+WHERE feladat_id BETWEEN 323 AND 372;
+
+
+
+
+
+
+
+
+
+
+
+UPDATE feladat
+SET feladat_pont = 3
+WHERE feladat_id BETWEEN 31 AND 90;
+
+UPDATE feladat
+SET feladat_pont = 3
+WHERE feladat_id = 149,161,167,169,173-180,183,186,188,189,218,219,224,225,227-231;
+
+
+UPDATE feladat
+SET feladat_pont = 6
+WHERE feladat_id = 222;
+
+UPDATE feladat
+SET feladat_pont = 6
+WHERE feladat_id = 353;
+
+UPDATE feladat
+SET feladat_pont = 4
+WHERE feladat_id = 242,271,290,296,302,310,313,315,324,355,357-362;
+
+
+
+
+
+

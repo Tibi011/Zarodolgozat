@@ -12,7 +12,6 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   const MySwal = withReactContent(Swal);
   const [osszpont, setOsszpont] = useState(null);
 
-
   const Ertekel = () => {
   let db = 0;
   let pontozas = 0;
@@ -73,10 +72,10 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   useEffect(() => {
   const leToltes = async () => {
     try {
-      let bemenet = { ev_id: kivalasztott };
+      let bemenet = { tema_id: kivalasztott };
 
-      // 1️⃣ evIdKeres
-      const response = await fetch(Cim.Cim + "/evIdKeres", {
+      //temaIdKeres
+      const response = await fetch(Cim.Cim + "/temaIdKeres", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bemenet),
@@ -84,7 +83,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
 
       const data = await response.json();
 
-      if (!response.ok) throw new Error("evIdKeres hiba");
+      if (!response.ok) throw new Error("temaIdKeres hiba");
 
       const tomb = Array.isArray(data) ? data : [data];
 
@@ -97,9 +96,9 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
 
       setAdatok(kibovitett);
 
-      // 2️⃣ evIdKeresOsszpont
+      //temaIdKeresOsszpont
       const responseOsszpont = await fetch(
-        Cim.Cim + "/evIdKeresOsszpont",
+        Cim.Cim + "/temaIdKeresOsszpont",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -110,7 +109,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
       const osszpontData = await responseOsszpont.json();
 
       if (!responseOsszpont.ok)
-        throw new Error("evIdKeresOsszpont hiba");
+        throw new Error("temaIdKeresOsszpont hiba");
 
       setOsszpont(osszpontData[0].Osszpont);
 

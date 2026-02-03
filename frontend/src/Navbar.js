@@ -35,6 +35,10 @@ const Navbar = () => {
             Feladat
           </Link>
 
+          <Link to="/feladat2" className="link" onClick={() => setMenuOpen(false)}>
+            Feladat2
+          </Link>
+
 
 
           {loggedIn && role === "admin" && (
@@ -63,6 +67,19 @@ const Navbar = () => {
           {loggedIn && role === "user" && (
             <Link to="/user" className="link" onClick={() => setMenuOpen(false)}>
               User menü
+            </Link>
+          )}
+
+          {loggedIn && role === "user" && (
+            <Link to="/feladatgyakorlas" className="link" onClick={() => setMenuOpen(false)}>
+              Gyakorlás
+            </Link>
+          )}
+
+
+          {loggedIn && role === "user" && (
+            <Link to="/eredmeny" className="link" onClick={() => setMenuOpen(false)}>
+              Eredmények
             </Link>
           )}
         </div>
