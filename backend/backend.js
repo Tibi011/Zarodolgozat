@@ -429,6 +429,10 @@ app.get('/feladatEgy/:feladat_id', (req, res) => {
         })
 })
 
+//információs ablak
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
