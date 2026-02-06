@@ -2,7 +2,7 @@
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
 
-const LenyiloEvAlap=({kivalasztott})=>{
+const LenyiloEvAlap=({kivalasztottEv})=>{
     const [adatok,setAdatok]=useState([])
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)
@@ -48,9 +48,9 @@ const LenyiloEvAlap=({kivalasztott})=>{
     
     else return (
         <div>
-            <select onChange={(e)=>  kivalasztott(e.target.value)      }>
+            <select onChange={(e)=>  kivalasztottEv(e.target.value)      }>
                 {adatok.map((elem, index) => (
-                    <option key={index}>
+                    <option key={index}  value={elem.ev_id}>
                     {elem.ev_szam}
                     </option>
                 ))}
