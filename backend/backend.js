@@ -46,13 +46,28 @@ app.post('/eredmenyKeres', (req, res) => {
     
         const {felhasznalo_id} =req.body
         const sql=`
-                select felhasznalo_nev,szazalek,datum
-                from felhasznalo
-                inner join eredmenyek
-                on felhasznalo.felhasznalo_id=eredmenyek.felhasznalo_id
-                where felhasznalo.felhasznalo_id=?
+                select *
+                from eredmenyek
+                where eredmenyek.felhasznalo_id=?
                 `
         pool.query(sql,[felhasznalo_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
+    // Get lekérdezés eredmény  
+    app.get('/eredmenyek', (req, res) => {
+        const sql=`SELECT * from eredmenyek`
+        pool.query(sql, (err, result) => {
         if (err) {
             console.log(err)
             return res.status(500).json({error:"Hiba"})

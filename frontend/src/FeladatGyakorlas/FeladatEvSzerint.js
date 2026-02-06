@@ -51,12 +51,21 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   const szazalek = Math.round((pontozas / osszpont) * 100);
   alert(id)
   // Itt ki kell írni adatbázisba, POST-os fetch
-  const bemenet={
-                    "szazalek":szazalek,
-                    "felhasznalo_id":id,
-                    "datum":"2026-02-02"
-                    
-                }
+  const most = new Date();
+
+                const datum =
+                  most.getFullYear() + "-" +
+                  String(most.getMonth() + 1).padStart(2, "0") + "-" +
+                  String(most.getDate()).padStart(2, "0") + " " +
+                  String(most.getHours()).padStart(2, "0") + ":" +
+                  String(most.getMinutes()).padStart(2, "0") + ":" +
+                  String(most.getSeconds()).padStart(2, "0");
+
+                const bemenet = {
+                  szazalek: szazalek,
+                  felhasznalo_id: id,
+                  datum: datum
+                };
 
                 const response=await fetch(Cim.Cim+"/eredmenyFelvitel", {
                                 method: "post",
