@@ -36,7 +36,7 @@ const Navbar = () => {
           </Link>
 
           <Link to="/feladat2" className="link" onClick={() => setMenuOpen(false)}>
-            Feladat2
+            Témák gyakorlása
           </Link>
 
 
