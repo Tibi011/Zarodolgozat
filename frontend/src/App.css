@@ -1,149 +1,290 @@
-h1,h2 {
-  text-align: center;
-  font-family: Cambria, Cochin;
-  color: rgb(64, 64, 171);
+/* ===== ALAP ===== */
+
+body {
+  margin: 0;
+  background-color: #f8fafc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e293b;
 }
 
-.kartya{
-  border:1px solid black;
-  margin:20px 150px;
-  padding:30px;
-  font-size: 20px;
+/* ===== LAYOUT ===== */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+}
+
+.col-sm-4 {
+  flex: 1;
+  min-width: 250px;
+}
+
+.col-sm-8 {
+  flex: 3;
+  min-width: 300px;
+}
+
+/* ===== BAL OLDAL (ÉV + INDÍTÁS) ===== */
+
+select {
+  width: 100%;
+  padding: 12px;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px;
-
-}
-.szoveg{
-  text-align: justify;
-}
-.datum{
-  color:blue;
-  font-size: smaller;
-}
-.ki{
-  color:rgb(0, 255, 13);
-  font-size: 15px;
-  font-style: italic;
-}
-.nev{
-  color:rgb(255, 0, 157);
-  text-align: right;
-}
-span{
-  font-size: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 16px;
+  background-color: white;
+  transition: 0.2s ease;
 }
 
-.zoldGomb{
-  background-color: rgb(11, 236, 30);
-  color:white;
-  border:none;
-  border-radius: 8px;
-  padding:10px 15px;
-  font-size:16px;
-  cursor:pointer;
-  margin-top: 8px;
-}
-.urlapDoboz{
-  border:2px solid green;
-  text-align: center;
-  margin:20px 250px;
-  padding:10px;
-  border-radius: 5px;
+select:focus {
+  outline: none;
+  border-color: #3b82f6;
 }
 
-input{
-  margin:5px;
-  border-radius: 5px;
-  padding:5px
-}
-.gombok{
-  width: 30px;
-}
-
-.tesztCim{
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-}
-
-
-
-
-.gombValasz {
+button {
   padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 500;
-  border: 2px solid #d0d0d0;
-  background: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
   cursor: pointer;
-  transition: 
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.15s ease;
+  transition: 0.2s ease;
 }
 
-.gombValasz:hover {
-  background-color: #eaf7ff;
-  border-color: #90c9ff;
-  box-shadow: 0 4px 10px rgba(0, 150, 255, 0.25);
+/* Teszt indítása */
+button:hover {
   transform: translateY(-2px);
 }
 
-.gombValasz:active {
-  transform: translateY(0px) scale(0.97);
+/* ===== TESZT CÍM ===== */
+
+.tesztCim {
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e3a8a;
 }
 
-.gombValasz.kivalasztva {
-  background-color: #caffd4 !important;
-  border-color: #58c879;
-  box-shadow: 0 4px 10px rgba(50, 200, 120, 0.35);
+/* ===== MEGSZAKÍTÁS ===== */
+
+button {
+  background-color: #3b82f6;
+  color: white;
 }
 
+button:hover {
+  background-color: #2563eb;
+}
+
+/* ===== ÉRTÉKELÉS GOMB ===== */
 
 .ertekeles-gomb {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 40px;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: white;
   padding: 15px 25px;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 999;
 }
 
 .ertekeles-gomb:hover {
-  background-color: #43a047;
+  transform: scale(1.05);
 }
 
+/* ===== KÉRDÉS DOBOZ ===== */
 
+.doboz {
+  background: white;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+}
 
+.doboz:hover {
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
 
-@media (max-width:1000px){
-  .kartya{
-    margin:10px;
-    padding: 10px;
-    font-size: 15px;
+.doboz span {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+/* ===== KÉP ===== */
+
+.doboz img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== VÁLASZGOMB ===== */
+
+.gombValasz {
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  font-size: 15px;
+}
+
+.gombValasz:hover {
+  background-color: #f1f5f9;
+  border-color: #3b82f6;
+}
+
+/* kijelölt válasz */
+.gombValasz[style*="lightgreen"] {
+  background-color: #dcfce7 !important;
+  border-color: #22c55e;
+}
+
+/* ===== BETÖLTÉS SZÖVEG ===== */
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  padding: 40px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .row {
+    flex-direction: column;
+    padding: 20px;
   }
-  .urlapDoboz{
-  
-    margin:20px 20px;
-    padding:10px;
-  
+
+  .ertekeles-gomb {
+    right: 20px;
+    bottom: 20px;
+  }
 }
-.gombValasz{
-                                    margin-right: "8px";
-                                    padding: "5px 4px";
-                                    cursor: "pointer";
-                                   
-                                    border: "1px solid #555";
-                                    border-radius: "4px";
-                                    width: "200px";
+
+
+
+/* kérdés szöveg */
+.doboz {
+  color: #000 !important;
 }
+
+/* válaszgomb szöveg */
+.gombValasz {
+  color: #000 !important;
 }
+
+/* select szöveg */
+select {
+  color: #000;
+}
+
+/* loading szöveg */
+.loading {
+  color: #000;
+}
+
+
+/* ===== EREDMÉNY OLDAL ===== */
+
+.eredmeny-container {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #f8fafc;
+}
+
+.eredmeny-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.eredmeny-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+  color: #1e3a8a;
+}
+
+/* ===== TÁBLÁZAT ===== */
+
+.eredmeny-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.eredmeny-table thead {
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+  color: white;
+}
+
+.eredmeny-table th,
+.eredmeny-table td {
+  padding: 14px;
+  text-align: center;
+}
+
+.eredmeny-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: 0.2s ease;
+}
+
+.eredmeny-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* ===== SZÁZALÉK BADGE ===== */
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.siker {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.sikertelen {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* ===== NINCS ADAT ===== */
+
+.nincs-adat {
+  padding: 20px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  .eredmeny-card {
+    padding: 20px;
+  }
+
+  .eredmeny-title {
+    font-size: 20px;
+  }
+}
+

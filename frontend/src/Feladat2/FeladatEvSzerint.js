@@ -11,6 +11,11 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   const [hiba, setHiba] = useState(false);
   const MySwal = withReactContent(Swal);
   const [osszpont, setOsszpont] = useState(null);
+  const [ertekelt, setErtekelt] = useState(false);
+
+  const helyesIndexek = (helyes) => {
+    return helyes.split(",").map((betu) => betu.charCodeAt(0) - 65);
+  };
 
   const Ertekel = () => {
   let db = 0;
@@ -34,7 +39,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
       pontozas+=elso.feladat_pont;
     }
   }
-
+  setErtekelt(true);
   const szazalek = Math.round((pontozas / osszpont) * 100);
 
   MySwal.fire({
@@ -61,6 +66,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
         gombok: [false, false, false, false, false, false],
       }))
     );
+    setErtekelt(false);
   }
 });
   };
@@ -173,8 +179,10 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
           <div key={elem.feladat_id ?? index} className="doboz">
             <div style={{ textAlign: "center", marginTop: "20px" }} />
             <div>
-              <span style={{fontSize:15}}>{index+1}. </span>
-              Kérdés: {elem.feladat_kerdes}
+              <span style={{fontSize:15}}>{index+1}. Kérdés:</span>
+              <div style={{ marginTop: "10px", fontSize: "16px" }}>
+                {elem.feladat_kerdes}
+              </div>
               {elem.feladat_kep ? (
                 <img
                   style={{ width: "400px", display: "block", marginTop: 10 }}
@@ -193,8 +201,20 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
                     className="gombValasz"
                     onClick={() => gombCsere(index, gIndex, elem.feladat_id)}
                     style={{
-                      backgroundColor: elem.gombok?.[gIndex] ? "lightgreen" : "white",
-                    }}
+                              backgroundColor: elem.gombok?.[gIndex] ? "lightblue" : "white",
+                              border: "1px solid gray",
+                              boxShadow: (() => {
+                                if (!ertekelt && elem.gombok?.[gIndex]) return "0 0 0 2px lightblue";
+                                if (ertekelt) {
+                                  const helyesek = helyesIndexek(elem.feladat_helyes);
+                                  const helyes = helyesek.includes(gIndex);
+                                  if (helyes) return "0 0 0 3px green";
+                                  if (!helyes) return "0 0 0 3px red";
+                                  if (elem.gombok?.[gIndex]) return "0 0 0 2px lightblue";
+                                }
+                                return "none";
+                              })(),
+                            }}
                   >
                     {txt}
                   </button>

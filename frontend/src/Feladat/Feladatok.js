@@ -41,7 +41,7 @@ const Feladatok=()=>{
                 <div className="col-sm-8">
                  {testStarted && <div className='tesztCim'>{selectedYear}</div>}
                   {testStarted && (
-                    <div style={{ textAlign: "center", margin: "20px 0" }}>
+                    <div style={{ textAlign: "center", margin: "20px 0",  }}>
                         <button onClick={Megszakit}>Megszakítás</button>
                     </div>
                 )}

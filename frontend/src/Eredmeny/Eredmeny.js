@@ -49,33 +49,38 @@ const Eredmeny = () => {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
-      <h2>Eredmények</h2>
+  <div className="eredmeny-container">
+    <div className="eredmeny-card">
+      <h2 className="eredmeny-title">Eredményeim</h2>
 
-      <table
-        style={{
-          width: "60%",
-          borderCollapse: "collapse",
-          margin: "20px auto",
-        }}
-      >
+      <table className="eredmeny-table">
         <thead>
           <tr>
-            <th style={thStyle}>Százalék</th>
-            <th style={thStyle}>Dátum</th>
+            <th>Százalék</th>
+            <th>Dátum</th>
           </tr>
         </thead>
         <tbody>
           {eredmenyek.length > 0 ? (
             eredmenyek.map((elem, index) => (
               <tr key={index}>
-                <td style={tdStyle}>{elem.szazalek} %</td>
-                <td style={tdStyle}>{formatDatum(elem.datum)}</td>
+                <td className="szazalek-cell">
+                  <span
+                    className={
+                      elem.szazalek >= 60
+                        ? "badge siker"
+                        : "badge sikertelen"
+                    }
+                  >
+                    {elem.szazalek} %
+                  </span>
+                </td>
+                <td>{formatDatum(elem.datum)}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td style={tdStyle} colSpan={2}>
+              <td colSpan={2} className="nincs-adat">
                 Nincs megjeleníthető adat
               </td>
             </tr>
@@ -83,18 +88,10 @@ const Eredmeny = () => {
         </tbody>
       </table>
     </div>
-  );
+  </div>
+);
+
 };
 
-const thStyle = {
-  border: "1px solid #ccc",
-  padding: "10px",
-  backgroundColor: "#f2f2f2",
-};
-
-const tdStyle = {
-  border: "1px solid #ccc",
-  padding: "10px",
-};
 
 export default Eredmeny;

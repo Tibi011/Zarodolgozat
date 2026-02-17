@@ -49,7 +49,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   }
   setErtekelt(true);
   const szazalek = Math.round((pontozas / osszpont) * 100);
-  alert(id)
+  // alert(id)
   // Itt ki kell írni adatbázisba, POST-os fetch
   const most = new Date();
 
@@ -213,8 +213,10 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
           <div key={elem.feladat_id ?? index} className="doboz">
             <div style={{ textAlign: "center", marginTop: "20px" }} />
             <div>
-              <span style={{fontSize:15}}>{index+1}. </span>
-              Kérdés: {elem.feladat_kerdes}
+              <span style={{fontSize:15}}>{index+1}. Kérdés:</span>
+               <div style={{ marginTop: "10px", fontSize: "16px" }}>
+                {elem.feladat_kerdes}
+              </div>
               {elem.feladat_kep ? (
                 <img
                   style={{ width: "400px", display: "block", marginTop: 10 }}
