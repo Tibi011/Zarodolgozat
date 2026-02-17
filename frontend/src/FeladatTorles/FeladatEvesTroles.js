@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react"
 import Cim from "../Cim"
 import Modosit from "../FeladatModosit/Modosit"
-import LenyiloEvAlap from "./LenyiloEvAlap"
+import LenyiloEvAlap from "../FeladatModosit/LenyiloEvAlap"
 
 
 
@@ -27,7 +27,7 @@ const modositasFuggveny=async (feladat_id,feledat_kerdes)=>{
 //szöveg
 
 const keres=async ()=>{
-    alert(kivalasztottEv)
+    //alert(kivalasztottEv)
 //szóra és évre
 //if (beSzoveg !== "" && kivalasztottEv !== 0)
         try{

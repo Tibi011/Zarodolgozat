@@ -5,6 +5,7 @@ import Cim from "../Cim"
 import LenyiloTema from "./LenyiloTema"
 import LenyiloEv from "./LenyiloEv"
 
+
 const Modosit=({kivalasztott})=>{
  const [kivalasztottTema,setKivalasztottTema]=useState(1)
  const [kivalasztottEv,setKivalasztottEv]=useState(1)
@@ -19,7 +20,7 @@ const Modosit=({kivalasztott})=>{
     //adatok módosítása- jatekModosit backend végpont hívása
     const adatModosit=async (e)=>{
         e.preventDefault()
-
+alert(kivalasztottTema)
         const bemenet={
             "feladat_kerdes":modFeladat.feladat_kerdes,
             "feladat_a":modFeladat.feladat_a,
@@ -201,7 +202,7 @@ const Modosit=({kivalasztott})=>{
             <div>
               
              <span style={{fontSize:15}}>Év: </span>
-             <LenyiloEv kivalasztott={setKivalasztottEv} kuld2={modFeladat.feladat_ev}/>
+             <LenyiloEv kivalasztottEv={setKivalasztottEv} kuld2={modFeladat.feladat_ev}/>
              {/*
              <input 
                 type="text" 
@@ -213,7 +214,7 @@ const Modosit=({kivalasztott})=>{
             <div>
               
              <span style={{fontSize:15}}>Témakör: </span>
-              <LenyiloTema kivalasztott={setKivalasztottTema} kuld={modFeladat.feladat_tema}/>
+              <LenyiloTema kivalasztottTema={setKivalasztottTema} kuld={modFeladat.feladat_tema}/>
 
             {/*
              <input 

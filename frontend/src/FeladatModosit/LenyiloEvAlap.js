@@ -48,9 +48,14 @@ const LenyiloEvAlap=({kivalasztottEv})=>{
     
     else return (
         <div>
-            <select onChange={(e)=>  kivalasztottEv(e.target.value)      }>
+            <select 
+            defaultValue={""}
+            onChange={(e)=>  kivalasztottEv(e.target.value)      }>
+               <option value="" disabled>
+                    Válassz egy évet
+                </option>
                 {adatok.map((elem, index) => (
-                    <option key={index}  value={elem.ev_id}>
+                    <option key={elem.ev_id}  value={elem.ev_id}>
                     {elem.ev_szam}
                     </option>
                 ))}
