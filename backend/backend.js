@@ -421,7 +421,7 @@ app.put('/feladatModosit/:feladat_id', (req, res) => {
         })
 })
 
-
+//Módosít 2
 app.get('/feladatEgy/:feladat_id', (req, res) => {
         const {feladat_id} =req.params
         const sql=`
