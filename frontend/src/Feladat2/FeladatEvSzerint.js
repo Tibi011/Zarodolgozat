@@ -13,11 +13,14 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   const [osszpont, setOsszpont] = useState(null);
   const [ertekelt, setErtekelt] = useState(false);
 
+  const id = localStorage.getItem("id");
+
+
   const helyesIndexek = (helyes) => {
     return helyes.split(",").map((betu) => betu.charCodeAt(0) - 65);
   };
 
-  const Ertekel = () => {
+  const Ertekel = async () => {
   let db = 0;
   let pontozas = 0;
 
@@ -41,6 +44,34 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
   }
   setErtekelt(true);
   const szazalek = Math.round((pontozas / osszpont) * 100);
+  const most = new Date();
+  
+                  const datum =
+                    most.getFullYear() + "-" +
+                    String(most.getMonth() + 1).padStart(2, "0") + "-" +
+                    String(most.getDate()).padStart(2, "0") + " " +
+                    String(most.getHours()).padStart(2, "0") + ":" +
+                    String(most.getMinutes()).padStart(2, "0") + ":" +
+                    String(most.getSeconds()).padStart(2, "0");
+  
+                  alert(kivalasztott)
+                  const bemenet = {
+                    szazalek: szazalek,
+                    felhasznalo_id: id,
+                    datum: datum,
+                    ev_id:0,
+                    temakor:kivalasztott
+                  };
+  
+                  const response=await fetch(Cim.Cim+"/eredmenyFelvitelTema", {
+                                  method: "post",
+                                  headers: {
+                                      "Content-Type": "application/json"
+                                  },
+                                  body: JSON.stringify(bemenet)
+                              })
+  
+                  const data = await response.json()
 
   MySwal.fire({
   title: "Értékelés",

@@ -25,13 +25,29 @@ app.get('/', (req, res) => {
         })
 
     //Tibi backend
-    
+   //A teljes teszt kitöltésének az eredményét viszi fel 
 app.post('/eredmenyFelvitel', (req, res) => {
-        const {szazalek,felhasznalo_id,datum}=req.body
+        const {szazalek,felhasznalo_id,datum,ev_id}=req.body
         const sql=`insert into eredmenyek 
-                    values (null,?,?,?)
+                    values (null,?,?,?,?,0)
                     `
-        pool.query(sql,[szazalek,felhasznalo_id,datum], (err, result) => {
+        pool.query(sql,[szazalek,felhasznalo_id,datum,ev_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+
+        return res.status(200).json({message:"Sikeres felvitel"})
+        })
+})
+
+//Csak egy témakör eredményét viszi fel
+app.post('/eredmenyFelvitelTema', (req, res) => {
+        const {szazalek,felhasznalo_id,datum,ev_id,temakor}=req.body
+        const sql=`insert into eredmenyek 
+                    values (null,?,?,?,?,?)
+                    `
+        pool.query(sql,[szazalek,felhasznalo_id,datum,ev_id,temakor], (err, result) => {
         if (err) {
             console.log(err)
             return res.status(500).json({error:"Hiba"})
@@ -42,12 +58,38 @@ app.post('/eredmenyFelvitel', (req, res) => {
 })
 
 
+app.post('/eredmenyKeresTema', (req, res) => {
+    
+        const {felhasznalo_id} =req.body
+        const sql=`
+                select *
+                from eredmenyek
+                inner join tema
+                on tema_id = temakor
+                where eredmenyek.felhasznalo_id=?
+                `
+        pool.query(sql,[felhasznalo_id], (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
+
+        return res.status(200).json(result)
+        })
+})
+
+
 app.post('/eredmenyKeres', (req, res) => {
     
         const {felhasznalo_id} =req.body
         const sql=`
                 select *
                 from eredmenyek
+                inner join ev
+                on ev.ev_id = eredmenyek.ev_id
                 where eredmenyek.felhasznalo_id=?
                 `
         pool.query(sql,[felhasznalo_id], (err, result) => {

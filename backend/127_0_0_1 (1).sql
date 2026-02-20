@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Feb 09. 14:18
+-- Létrehozás ideje: 2026. Feb 20. 08:38
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -33,18 +33,38 @@ CREATE TABLE `eredmenyek` (
   `eredmeny_id` int(11) NOT NULL,
   `szazalek` double NOT NULL,
   `felhasznalo_id` int(11) NOT NULL,
-  `datum` datetime NOT NULL
+  `datum` datetime NOT NULL,
+  `ev_id` int(11) NOT NULL,
+  `temakor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `eredmenyek`
 --
 
-INSERT INTO `eredmenyek` (`eredmeny_id`, `szazalek`, `felhasznalo_id`, `datum`) VALUES
-(1, 55, 8, '2026-01-27 00:00:00'),
-(2, 1, 8, '2026-01-27 00:00:00'),
-(3, 69, 6, '2026-01-27 00:00:00'),
-(9, 1, 8, '2026-02-03 08:39:58');
+INSERT INTO `eredmenyek` (`eredmeny_id`, `szazalek`, `felhasznalo_id`, `datum`, `ev_id`, `temakor`) VALUES
+(1, 55, 8, '2026-01-27 00:00:00', 1, 0),
+(2, 1, 8, '2026-01-27 00:00:00', 1, 0),
+(3, 69, 6, '2026-01-27 00:00:00', 1, 0),
+(9, 1, 8, '2026-02-03 08:39:58', 1, 0),
+(10, 0, 8, '2026-02-17 08:45:46', 1, 0),
+(11, 0, 8, '2026-02-17 08:46:02', 1, 0),
+(12, 1, 8, '2026-02-17 08:46:26', 1, 0),
+(13, 1, 8, '2026-02-17 08:46:47', 1, 0),
+(14, 1, 8, '2026-02-19 08:57:07', 1, 0),
+(15, 0, 8, '2026-02-19 08:57:29', 1, 0),
+(16, 1, 8, '2026-02-19 08:59:34', 2, 0),
+(17, 1, 8, '2026-02-19 09:03:03', 2, 0),
+(18, 1, 8, '2026-02-19 09:04:55', 1, 0),
+(19, 0, 8, '2026-02-19 13:34:07', 1, 0),
+(20, 1, 8, '2026-02-19 13:38:24', 1, 0),
+(21, 1, 8, '2026-02-19 13:42:20', 1, 0),
+(22, 2, 8, '2026-02-19 13:57:50', 1, 0),
+(23, 1, 8, '2026-02-19 13:57:59', 4, 0),
+(24, 2, 8, '2026-02-19 14:02:09', 0, 1),
+(25, 2, 8, '2026-02-19 14:02:19', 0, 1),
+(26, 2, 8, '2026-02-19 14:04:24', 0, 3),
+(27, 1, 8, '2026-02-19 14:05:36', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -486,7 +506,7 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT a táblához `eredmenyek`
 --
 ALTER TABLE `eredmenyek`
-  MODIFY `eredmeny_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `eredmeny_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT a táblához `ev`

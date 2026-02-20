@@ -20,6 +20,7 @@ import EvKeres from './FeladatKeres/EvKeres';
 //User menük
 import FeladatGyakorlas from './FeladatGyakorlas/Feladatok'
 import Eredmeny from './Eredmeny/Eredmeny';
+import EredmenyTema from './EredmenyTema/EredmenyTema';
 
 const ProtectedRoute = ({ children, role }) => {
   const token = localStorage.getItem("token");
@@ -46,6 +47,7 @@ function App() {
           <Route path="/feladat" element={<Feladat />} />
           <Route path="/feladat2" element={<Feladat2 />} />
           <Route path="/eredmeny" element={<Eredmeny />} />
+          <Route path="/eredmenyTema" element={<EredmenyTema />} />
           
 
 

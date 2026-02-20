@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Cim from "../Cim";
 import "../App.css";
 
-const Eredmeny = () => {
+const EredmenyTema = () => {
   const [eredmenyek, setEredmenyek] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Eredmeny = () => {
     };
 
     try {
-      const response = await fetch(Cim.Cim + "/eredmenyKeres", {
+      const response = await fetch(Cim.Cim + "/eredmenyKeresTema", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,8 +56,8 @@ const Eredmeny = () => {
       <table className="eredmeny-table">
         <thead>
           <tr>
+            <th>Témakör</th>
             <th>Százalék</th>
-            <th>Év</th>
             <th>Dátum</th>
           </tr>
         </thead>
@@ -65,6 +65,7 @@ const Eredmeny = () => {
           {eredmenyek.length > 0 ? (
             eredmenyek.map((elem, index) => (
               <tr key={index}>
+                <td>{elem.tema}</td>
                 <td className="szazalek-cell">
                   <span
                     className={
@@ -75,9 +76,6 @@ const Eredmeny = () => {
                   >
                     {elem.szazalek} %
                   </span>
-                </td>
-                <td>
-                  {elem.ev_szam}
                 </td>
                 <td>{formatDatum(elem.datum)}</td>
               </tr>
@@ -98,4 +96,4 @@ const Eredmeny = () => {
 };
 
 
-export default Eredmeny;
+export default EredmenyTema;

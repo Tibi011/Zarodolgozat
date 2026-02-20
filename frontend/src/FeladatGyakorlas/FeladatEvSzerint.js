@@ -61,10 +61,13 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
                   String(most.getMinutes()).padStart(2, "0") + ":" +
                   String(most.getSeconds()).padStart(2, "0");
 
+                alert(kivalasztott)
                 const bemenet = {
                   szazalek: szazalek,
                   felhasznalo_id: id,
-                  datum: datum
+                  datum: datum,
+                  ev_id:kivalasztott
+                  
                 };
 
                 const response=await fetch(Cim.Cim+"/eredmenyFelvitel", {

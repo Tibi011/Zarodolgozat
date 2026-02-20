@@ -73,6 +73,14 @@ const Navbar = () => {
             <Link to="/eredmeny" className="link" onClick={() => setMenuOpen(false)}>
               Eredmények
             </Link>
+            
+          )}
+
+          {loggedIn && role === "user" && (
+            <Link to="/eredmenyTema" className="link" onClick={() => setMenuOpen(false)}>
+              Téma eredmények
+            </Link>
+            
           )}
         </div>
       </div>
