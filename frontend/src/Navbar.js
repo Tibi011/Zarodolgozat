@@ -39,6 +39,12 @@ const Navbar = () => {
             Témák gyakorlása
           </Link>
 
+          <Link to="/informaciok" className="link" onClick={() => setMenuOpen(false)}>
+            Tanulnivaló
+          </Link>
+
+
+
 
 
           {loggedIn && role === "admin" && (

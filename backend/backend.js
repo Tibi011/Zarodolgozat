@@ -445,7 +445,24 @@ app.get('/feladatEgy/:feladat_id', (req, res) => {
 })
 
 //információs ablak
+app.get('/informacio', (req, res) => {
+        const sql=`
+                    select *
+                    from informacio;
+                
+                    `
+        pool.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).json({error:"Hiba"})
+        }
+        if (result.length===0){
+            return res.status(404).json({error:"Nincs adat"})
+        }
 
+        return res.status(200).json(result)
+        })
+})
 
 
 

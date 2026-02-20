@@ -11,6 +11,7 @@ import Register from './Register';
 import Menu1 from './Menu1/Menu1';
 import Feladat from './Feladat/Feladatok'
 import Feladat2 from './Feladat2/Feladatok'
+import Informaciok from './Informaciok/Informaciok';
 //Admin menük
 import Admin from './Admin/Admin';
 import FeladatTorles from './FeladatTorles/FeladatTorles';
@@ -20,6 +21,7 @@ import EvKeres from './FeladatKeres/EvKeres';
 //User menük
 import FeladatGyakorlas from './FeladatGyakorlas/Feladatok'
 import Eredmeny from './Eredmeny/Eredmeny';
+
 
 const ProtectedRoute = ({ children, role }) => {
   const token = localStorage.getItem("token");
@@ -46,6 +48,8 @@ function App() {
           <Route path="/feladat" element={<Feladat />} />
           <Route path="/feladat2" element={<Feladat2 />} />
           <Route path="/eredmeny" element={<Eredmeny />} />
+          <Route path="/informaciok" element={<Informaciok />} />
+          
           
 
 
