@@ -47,11 +47,7 @@ const Navbar = () => {
 
 
 
-          {loggedIn && role === "admin" && (
-            <Link to="/admin" className="link" onClick={() => setMenuOpen(false)}>
-              Admin
-            </Link>
-          )}
+         
           {loggedIn && role === "admin" && (
             <Link to="/feladatTorles" className="link" onClick={() => setMenuOpen(false)}>
               Feladat Kezelés

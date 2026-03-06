@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Már 06. 11:46
+-- Létrehozás ideje: 2026. Már 06. 12:43
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.2.4
 
@@ -20,6 +20,72 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `osztv_adatbazis`
 --
+CREATE DATABASE IF NOT EXISTS `osztv_adatbazis` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `osztv_adatbazis`;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `eredmenyek`
+--
+
+CREATE TABLE `eredmenyek` (
+  `eredmeny_id` int(11) NOT NULL,
+  `szazalek` double NOT NULL,
+  `felhasznalo_id` int(11) NOT NULL,
+  `datum` datetime NOT NULL,
+  `ev_id` int(11) NOT NULL,
+  `temakor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `eredmenyek`
+--
+
+INSERT INTO `eredmenyek` (`eredmeny_id`, `szazalek`, `felhasznalo_id`, `datum`, `ev_id`, `temakor`) VALUES
+(1, 55, 8, '2026-01-27 00:00:00', 1, 0),
+(2, 1, 8, '2026-01-27 00:00:00', 1, 0),
+(3, 69, 6, '2026-01-27 00:00:00', 1, 0),
+(9, 1, 8, '2026-02-03 08:39:58', 1, 0),
+(10, 0, 8, '2026-02-17 08:45:46', 1, 0),
+(11, 0, 8, '2026-02-17 08:46:02', 1, 0),
+(12, 1, 8, '2026-02-17 08:46:26', 1, 0),
+(13, 1, 8, '2026-02-17 08:46:47', 1, 0),
+(14, 1, 8, '2026-02-19 08:57:07', 1, 0),
+(15, 0, 8, '2026-02-19 08:57:29', 1, 0),
+(16, 1, 8, '2026-02-19 08:59:34', 2, 0),
+(17, 1, 8, '2026-02-19 09:03:03', 2, 0),
+(18, 1, 8, '2026-02-19 09:04:55', 1, 0),
+(19, 0, 8, '2026-02-19 13:34:07', 1, 0),
+(20, 1, 8, '2026-02-19 13:38:24', 1, 0),
+(21, 1, 8, '2026-02-19 13:42:20', 1, 0),
+(22, 2, 8, '2026-02-19 13:57:50', 1, 0),
+(23, 1, 8, '2026-02-19 13:57:59', 4, 0),
+(24, 2, 8, '2026-02-19 14:02:09', 0, 1),
+(25, 2, 8, '2026-02-19 14:02:19', 0, 1),
+(26, 2, 8, '2026-02-19 14:04:24', 0, 3),
+(27, 1, 8, '2026-02-19 14:05:36', 0, 4),
+(28, 1, 8, '2026-02-20 09:03:24', 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `ev`
+--
+
+CREATE TABLE `ev` (
+  `ev_id` int(11) NOT NULL,
+  `ev_szam` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `ev`
+--
+
+INSERT INTO `ev` (`ev_id`, `ev_szam`) VALUES
+(1, 2025),
+(2, 2024),
+(3, 2023);
 
 -- --------------------------------------------------------
 
@@ -424,9 +490,107 @@ INSERT INTO `feladat` (`feladat_id`, `feladat_kerdes`, `feladat_a`, `feladat_b`,
 (373, 'Az alábbiak közül melyik CSS szelektorral lehet hivatkozni az összes olyan\r\nbekezdésre, amik a div elemen belül helyezkednek el?', 'div, p', 'div p', 'div>p\r\n', 'div+p', '', '', 'B', '', 3, 4, 2),
 (374, ' Mi az a Bootstrap?', 'BIOS beállítás, amivel meg lehet határozni a gép indításáért felelős eszközt\r\n', 'JS és CSS keretrendszer\r\n', 'Egy Boot manager program', 'Statikus weblapok készítéséhez használt segédprogram', '', '', 'B', '', 3, 4, 2);
 
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `felhasznalo`
+--
+
+CREATE TABLE `felhasznalo` (
+  `felhasznalo_id` int(11) NOT NULL,
+  `felhasznalo_nev` varchar(255) NOT NULL,
+  `felhasznalo_jelszo` varchar(255) NOT NULL,
+  `felhasznalo_rang` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `felhasznalo`
+--
+
+INSERT INTO `felhasznalo` (`felhasznalo_id`, `felhasznalo_nev`, `felhasznalo_jelszo`, `felhasznalo_rang`) VALUES
+(5, 'Aa', '$2a$10$auhieAYn7dvRvnziq7bFHuNTcBVx/LMBUofF/wsbkz6rfTn95x6mO', 1),
+(6, 'Admin', '$2a$10$FNoGv4HB.4kVETfdb2QvbegXOqNv2BNpXWCDwFKla.www/Qz0wMB.', 2),
+(8, 'User', '$2b$10$6/h08PIcMvWwlzV66dNsaeMD5Vc/jq0q2N4p1IsvO5YrvZdP9VyxK', 1),
+(9, 'Proba', '$2b$10$eAcFZ8OKIz8KgAzEGhsJxeZyLcNb4Lfe2bfgfTmygINASTzN9jCxq', 1),
+(10, 'gg', '$2b$10$.AmZdgjyIr7QbCVvfLkTwO/Kd.FQ7DP4AZAjb4wgpt/8lorEXEd4.', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `informacio`
+--
+
+CREATE TABLE `informacio` (
+  `informacio_id` int(11) NOT NULL,
+  `informacio_cim` varchar(255) NOT NULL,
+  `informacio_tananyag` text NOT NULL,
+  `informacio_tema` varchar(255) NOT NULL,
+  `informacio_datum` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `informacio`
+--
+
+INSERT INTO `informacio` (`informacio_id`, `informacio_cim`, `informacio_tananyag`, `informacio_tema`, `informacio_datum`) VALUES
+(1, 'Adatbázis utasítások', '<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\n    <h6 style=\"margin-top: 0;\">1. SELECT</h6>\n    <p><strong>Adatok lekérdezésére szolgál egy vagy több táblából.</strong></p>\n    <pre style=\"background-color: #eeeeee; padding: 10px; border-radius: 5px;\">\nSELECT oszlop1, oszlop2, ...\nFROM tabla_nev\n[WHERE feltetel]\n[GROUP BY oszlop]\n[HAVING feltetel]\n[ORDER BY oszlop];\n    </pre>\n</div>\n\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\n    <h6 style=\"margin-top: 0;\">2. INSERT</h6>\n    <p><strong>Új rekord(ok) beszúrására szolgál a táblába.</strong></p>\n    <pre style=\"background-color: #eeeeee; padding: 10px; border-radius: 5px;\">\nINSERT INTO tabla_nev (oszlop1, oszlop2, ...)\nVALUES (ertek1, ertek2, ...);\n    </pre>\n</div>\n\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\n    <h6 style=\"margin-top: 0;\">3. UPDATE</h6>\n    <p><strong>Meglévő rekord(ok) adatainak módosítására szolgál.</strong></p>\n    <pre style=\"background-color: #eeeeee; padding: 10px; border-radius: 5px;\">\nUPDATE tabla_nev\nSET oszlop1 = ertek1, oszlop2 = ertek2, ...\n[WHERE feltetel];\n    </pre>\n</div>\n\n<div style=\"background-color: white; padding: 20px; border-radius: 8px;\">\n    <h6 style=\"margin-top: 0;\">4. DELETE</h6>\n    <p><strong>Rekord(ok) törlésére szolgál a táblából.</strong></p>\n    <pre style=\"background-color: #eeeeee; padding: 10px; border-radius: 5px;\">\nDELETE FROM tabla_nev\n[WHERE feltetel];\n    </pre>\n</div>\n', 'Adatbázis kezelés', '2026-02-06'),
+(2, 'Adatbázis alapfogalmak', '<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">1. Mező (attribútum)</h6>\r\n    <p><strong>A tábla egy oszlopa, amely egy adott tulajdonságot ír le.</strong></p>\r\n    <p>Egy mező azonos típusú adatokat tartalmaz (pl. név, életkor, cím).</p>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">2. Rekord (sor)</h6>\r\n    <p><strong>A tábla egy sora, amely egy konkrét egyed összes adatát tartalmazza.</strong></p>\r\n    <p>Egy rekord az adott egyedhez tartozó mezőértékeket foglalja magában.</p>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">3. Egyed (entitás)</h6>\r\n    <p><strong>Olyan valós vagy elképzelt objektum, amelyről adatokat tárolunk.</strong></p>\r\n    <p>Például: tanuló, dolgozó, termék. Az egyed adatai rekordként jelennek meg a táblában.</p>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">4. Tábla (reláció)</h6>\r\n    <p><strong>Az adatbázis alapvető szerkezeti egysége.</strong></p>\r\n    <p>Oszlopokból (mezőkből) és sorokból (rekordokból) áll.</p>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">5. Kapcsolat (reláció egyedek között)</h6>\r\n    <p><strong>Két vagy több egyed közötti összefüggés.</strong></p>\r\n    <p>Általában kulcsok (elsődleges kulcs, idegen kulcs) segítségével valósul meg.</p>\r\n    <ul>\r\n        <li>egy az egyhez (1:1)</li>\r\n        <li>egy a többhöz (1:N)</li>\r\n        <li>több a többhöz (N:M)</li>\r\n    </ul>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">6. Elsődleges kulcs (Primary Key)</h6>\r\n    <p><strong>Egy vagy több mező, amely egyértelműen azonosít egy rekordot.</strong></p>\r\n    <p>Nem ismétlődhet, és nem lehet NULL értékű.</p>\r\n</div>\r\n\r\n<div style=\"background-color: white; padding: 20px; border-radius: 8px;\">\r\n    <h6 style=\"margin-top: 0;\">7. Idegen kulcs (Foreign Key)</h6>\r\n    <p><strong>Olyan mező, amely egy másik tábla elsődleges kulcsára hivatkozik.</strong></p>\r\n    <p>A táblák közötti kapcsolat biztosítására szolgál.</p>\r\n</div>', 'Adatbázis kezelés', '2026-02-06');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `rang`
+--
+
+CREATE TABLE `rang` (
+  `rang_id` int(11) NOT NULL,
+  `rang_nev` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `rang`
+--
+
+INSERT INTO `rang` (`rang_id`, `rang_nev`) VALUES
+(1, 'user'),
+(2, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `tema`
+--
+
+CREATE TABLE `tema` (
+  `tema_id` int(11) NOT NULL,
+  `tema` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `tema`
+--
+
+INSERT INTO `tema` (`tema_id`, `tema`) VALUES
+(1, 'I. Információtechnológiai alapismeretek '),
+(2, 'II. Frontend programozás'),
+(3, 'III. Backend programozás '),
+(4, 'IV. Szoftverfejlesztés és -tesztelés');
+
 --
 -- Indexek a kiírt táblákhoz
 --
+
+--
+-- A tábla indexei `eredmenyek`
+--
+ALTER TABLE `eredmenyek`
+  ADD PRIMARY KEY (`eredmeny_id`);
+
+--
+-- A tábla indexei `ev`
+--
+ALTER TABLE `ev`
+  ADD PRIMARY KEY (`ev_id`);
 
 --
 -- A tábla indexei `feladat`
@@ -436,14 +600,74 @@ ALTER TABLE `feladat`
   ADD KEY `feladat_tema` (`feladat_tema`);
 
 --
+-- A tábla indexei `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
+  ADD PRIMARY KEY (`felhasznalo_id`);
+
+--
+-- A tábla indexei `informacio`
+--
+ALTER TABLE `informacio`
+  ADD PRIMARY KEY (`informacio_id`);
+
+--
+-- A tábla indexei `rang`
+--
+ALTER TABLE `rang`
+  ADD PRIMARY KEY (`rang_id`);
+
+--
+-- A tábla indexei `tema`
+--
+ALTER TABLE `tema`
+  ADD PRIMARY KEY (`tema_id`);
+
+--
 -- A kiírt táblák AUTO_INCREMENT értéke
 --
+
+--
+-- AUTO_INCREMENT a táblához `eredmenyek`
+--
+ALTER TABLE `eredmenyek`
+  MODIFY `eredmeny_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT a táblához `ev`
+--
+ALTER TABLE `ev`
+  MODIFY `ev_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `feladat`
 --
 ALTER TABLE `feladat`
   MODIFY `feladat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
+
+--
+-- AUTO_INCREMENT a táblához `felhasznalo`
+--
+ALTER TABLE `felhasznalo`
+  MODIFY `felhasznalo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT a táblához `informacio`
+--
+ALTER TABLE `informacio`
+  MODIFY `informacio_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT a táblához `rang`
+--
+ALTER TABLE `rang`
+  MODIFY `rang_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT a táblához `tema`
+--
+ALTER TABLE `tema`
+  MODIFY `tema_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
