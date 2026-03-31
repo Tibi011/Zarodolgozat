@@ -117,23 +117,24 @@ Példa:
 
 # 🔗 API végpontok (példa)
 
-  Method   Endpoint        Leírás
-  -------- --------------- ------------------------
-  GET      /tema                Feladatok kiírása téma szerint
-  GET      /mindenadat          Feladatok kiírása év szerint
-  POST     /kerdesKeres         Feladat keresése
-  POST     /eredmenyKeres       Eredmények kiiratása felhasználó alapján
-  POST     /eredmenyFelvitel    Eredmények rögzítése
+| Method | Endpoint          | Leírás                                   |
+| ------ | ----------------- | ---------------------------------------- |
+| GET    | /tema             | Feladatok kiírása téma szerint           |
+| GET    | /mindenadat       | Feladatok kiírása év szerint             |
+| POST   | /kerdesKeres      | Feladat keresése                         |
+| POST   | /eredmenyKeres    | Eredmények kiiratása felhasználó alapján |
+| POST   | /eredmenyFelvitel | Eredmények rögzítése                     |
+
 
 ------------------------------------------------------------------------
 
 # 📸 Képernyőképek
 
-    [Főoldal](kepernyokepek/2.png)
-    [Feladatok](kepernyokepek/3.png)
-    [Eredmények](kepernyokepek/4.png)
-    [Bejelentkezés](kepernyokepek/5.png)
-    [Feladatok kezelése](kepernyokepek/6.png)
+    ![Főoldal](kepernyokepek/2.png)
+    ![Feladatok](kepernyokepek/3.png)
+    ![Eredmények](kepernyokepek/4.png)
+    ![Bejelentkezés](kepernyokepek/5.png)
+    ![Feladatok kezelése](kepernyokepek/6.png)
 
 ------------------------------------------------------------------------
 
