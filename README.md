@@ -129,11 +129,11 @@ Példa:
 
 # 📸 Képernyőképek
 
-    ![Főoldal](kepernyokepek/2.png)
-    ![Feladatok](kepernyokepek/3.png)
-    ![Eredmények](kepernyokepek/4.png)
-    ![Bejelentkezés](kepernyokepek/5.png)
-    ![Feladatok kezelése](kepernyokepek/6.png)
+    [Főoldal](kepernyokepek/2.png)
+    [Feladatok](kepernyokepek/3.png)
+    [Eredmények](kepernyokepek/4.png)
+    [Bejelentkezés](kepernyokepek/5.png)
+    [Feladatok kezelése](kepernyokepek/6.png)
 
 ------------------------------------------------------------------------
 
