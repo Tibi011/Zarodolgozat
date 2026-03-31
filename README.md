@@ -133,17 +133,8 @@ Példa:
 
 ------------------------------------------------------------------------
 
-# 🎓 Projekt célja
-
-A projekt célja egy teljes **webalkalmazás** létrehozása
-volt, amely bemutatja:
-
--   frontend fejlesztést React segítségével
--   backend API készítését Express használatával
--   adatbázis kezelését MySQL segítségével
-
-------------------------------------------------------------------------
-
 # 📄 Licenc
 
-Ez a projekt oktatási célból készült.
+Ez a projekt oktatási célból készült, saját szellemi termékünk.
+
+Munka megosztás, API, Funkciók
