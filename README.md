@@ -95,11 +95,6 @@ A frontend elérhető lesz:
 
 1.  Hozz létre egy új adatbázist MySQL-ben:
 
-```{=html}
-<!-- -->
-```
-    OSZTV verseny
-
 2.  Importáld a `osztv_adatbazis.sql` fájlt.
 
 3.  Állítsd be a backendben az adatbázis kapcsolatot.
@@ -130,11 +125,11 @@ Példa:
 
 # 📸 Képernyőképek
 
-    ![Főoldal](kepernyokepek/2.png)
-    ![Feladatok](kepernyokepek/3.png)
-    ![Eredmények](kepernyokepek/4.png)
-    ![Bejelentkezés](kepernyokepek/5.png)
-    ![Feladatok kezelése](kepernyokepek/6.png)
+![Főoldal](./kepernyokepek/2.png)
+![Feladatok](./kepernyokepek/3.png)
+![Eredmények](./kepernyokepek/4.png)
+![Bejelentkezés](./kepernyokepek/5.png)
+![Feladatok kezelése](./kepernyokepek/6.png)
 
 ------------------------------------------------------------------------
 
