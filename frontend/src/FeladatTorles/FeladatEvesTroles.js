@@ -8,7 +8,7 @@ import LenyiloEvAlap from "../FeladatModosit/LenyiloEvAlap"
 
 const FeladatEvesTorles=()=>{
     const [adatok,setAdatok]=useState([])
-    const [adatokEv,setAdatokEv]=useState([])
+    const [,setAdatokEv]=useState([])
     const [beSzoveg,setBeSzoveg]=useState("")
     const [tolt,setTolt]=useState(true)
     const [hiba,setHiba]=useState(false)

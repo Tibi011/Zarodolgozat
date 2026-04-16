@@ -4,8 +4,8 @@ import Cim from "../Cim"
 const KeresKerdes=()=>{
     const [beSzoveg,setBeSzoveg]=useState("")
     const [adatok,setAdatok]=useState([])
-    const [tolt,setTolt]=useState(true)
-    const [hiba,setHiba]=useState(false)
+    const [,setTolt]=useState(true)
+    const [,setHiba]=useState(false)
 
     const keres=async ()=>{
         try{

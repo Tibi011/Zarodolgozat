@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 
 const FeladatEvSzerint = ({ kivalasztott }) => {
   const [adatok, setAdatok] = useState([]);
-  const [kivalaszt, setKivalaszt] = useState([]);
   const [tolt, setTolt] = useState(true);
   const [hiba, setHiba] = useState(false);
   const MySwal = withReactContent(Swal);
@@ -54,7 +53,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
                     String(most.getMinutes()).padStart(2, "0") + ":" +
                     String(most.getSeconds()).padStart(2, "0");
   
-                  alert(kivalasztott)
+                  //alert(kivalasztott)
                   const bemenet = {
                     szazalek: szazalek,
                     felhasznalo_id: id,
@@ -72,6 +71,7 @@ const FeladatEvSzerint = ({ kivalasztott }) => {
                               })
   
                   const data = await response.json()
+                  console.log(JSON.stringify(data))
 
   MySwal.fire({
   title: "Értékelés",
