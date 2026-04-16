@@ -6,7 +6,6 @@ import withReactContent from "sweetalert2-react-content";
 
 const FeladatEvSzerint = ({ kivalasztott }) => {
   const [adatok, setAdatok] = useState([]);
-  const [kivalaszt, setKivalaszt] = useState([]);
   const [tolt, setTolt] = useState(true);
   const [hiba, setHiba] = useState(false);
   const MySwal = withReactContent(Swal);
