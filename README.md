@@ -6,6 +6,7 @@ Az alkalmazás lehetővé teszi a diákok számára a versenyekre való felkész
 és gyakorlást digitális formában.
 
 A rendszer **frontend és backend architektúrával** készült.
+tesztosztv.netlify.app
 
 ------------------------------------------------------------------------
 
