@@ -7,7 +7,7 @@ Az alkalmazás lehetővé teszi a diákok számára a versenyekre való felkész
 
 A rendszer **frontend és backend architektúrával** készült.
 
-[OSZTV Teszt](tesztosztv.netlify.app)
+[OSZTV Teszt](https://tesztosztv.netlify.app/)
 
 ------------------------------------------------------------------------
 
