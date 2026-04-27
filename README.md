@@ -139,5 +139,3 @@ Példa:
 # 📄 Licenc
 
 Ez a projekt oktatási célból készült, saját szellemi termékünk.
-
-Munka megosztás, API, Funkciók
